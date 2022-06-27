@@ -13,7 +13,7 @@ function Navbar() {
                 if (window.scrollY === 0) return setIsScroll(false);
                 if (window.scrollY > 0) return setIsScroll(true);
             }, 200),
-        [isScroll]
+        [setIsScroll]
     );
 
     useEffect(() => {
