@@ -1,24 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import DocumentMeta from "react-document-meta";
-
-const meta = {
-    title: "포트폴리오",
-    meta: {
-        name: {
-            keywords: "조형물,조형물사업",
-        },
-    },
-};
 
 function Portfolio() {
-    const [inputValue, setInputValue] = useState();
+    // const [inputValue, setInputValue] = useState();
 
-    const handleInput = (e) => {
-        setInputValue(e.target.value);
-    };
+    // const handleInput = (e) => {
+    //     setInputValue(e.target.value);
+    // };
 
-    return <Container>{/* <DocumentMeta {...meta} /> */}</Container>;
+    return <Container></Container>;
 }
 
 const Container = styled.div`
