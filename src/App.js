@@ -25,6 +25,7 @@ function App() {
                     <Route path="/admin" element={<Admin />} />
                 </Routes>
                 <ToastContainer
+                    theme="dark"
                     position="top-center"
                     autoClose={2000}
                     hideProgressBar={true}

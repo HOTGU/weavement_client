@@ -6,7 +6,6 @@ const Btn = styled.div`
     padding: 10px;
     border-radius: 5px;
     border: 1px solid ${(props) => props.theme.accentColor};
-    /* background-color: ${(props) => props.theme.subAccentColor}; */
     color: ${(props) => props.theme.accentColor};
     font-size: 14px;
     font-weight: 900;

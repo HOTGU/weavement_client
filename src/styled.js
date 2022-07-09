@@ -27,16 +27,26 @@ export const GlobalStyles = createGlobalStyle`
         width:100%;
         max-width: 1400px;
         margin: 0 auto;
+        padding: 0 10px;
+    }
+    .btn {
+        padding: 10px 14px;
+        font-size: 18px;
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid #dcdde1;
     }
 `;
 
 export const myTheme = {
     navbarHeight: "80px",
     bgColor: "white",
-    textColor: "#2c3e50",
+    textColor: "black",
     accentColor: "rgb(166,25,46)",
     subAccentColor: "rgb(192,156,131)",
     borderColor: "#dcdde1",
     hoverColor: "#bdc3c7",
     grayColor: "#95a5a6",
+    blackColor: "black",
+    darkGrayColor: "#3e3a39",
 };
