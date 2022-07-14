@@ -148,6 +148,7 @@ function Navbar() {
 
 const NavbarContainer = styled.div`
     position: fixed;
+    top: 0;
     height: ${(props) => props.theme.navbarHeight};
     color: ${(props) =>
         props.isMain

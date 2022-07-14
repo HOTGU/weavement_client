@@ -8,9 +8,20 @@ import { device } from "../device";
 
 function Contact() {
     const imgRef = useRef();
+    const stepRef = useRef();
+    const hasDesignRef = useRef();
+    const costAndScheduleRef = useRef();
+    const descriptionRef = useRef();
+    const knowPathRef = useRef();
+    const clientRef = useRef();
     const [images, setImages] = useState([]);
     const [files, setFiles] = useState([]);
-    const { register, handleSubmit, watch } = useForm();
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
 
     const watchAll = watch();
 
@@ -33,6 +44,22 @@ function Contact() {
 
     const onValid = (data) => {
         data.images = files;
+        if (
+            !data.step ||
+            !data.hasDesign ||
+            !data.cost ||
+            !data.schedule ||
+            !data.description ||
+            !data.knowPath ||
+            !data.clientName ||
+            !data.clientCompany ||
+            !data.clientPhone ||
+            !data.clientEmail
+        ) {
+            console.log(1);
+            toast.error("필수항목들을 입력하세요");
+            return;
+        }
         console.log(data);
     };
 
@@ -44,42 +71,40 @@ function Contact() {
                         <div>프로젝트 의뢰</div>
                         <div>Project Contact</div>
                     </ProcessHead>
-                    <Column>
+                    <Column ref={stepRef}>
                         <div className="column__head">어떤 단계인가요? *</div>
                         <div className="column__info">
                             <label htmlFor="planing">
                                 <input
-                                    {...register("step")}
                                     type="radio"
                                     id="planing"
-                                    name="step"
                                     value="기획,예편"
+                                    {...register("step")}
                                 />
                                 <div className="btn">기획 및 예산 편성 단계</div>
                             </label>
                             <label htmlFor="design">
                                 <input
-                                    {...register("step")}
                                     type="radio"
                                     id="design"
-                                    name="step"
                                     value="디자인,설계"
+                                    {...register("step")}
                                 />
                                 <div className="btn">디자인 및 설계 단계</div>
                             </label>
                             <label htmlFor="making">
                                 <input
-                                    {...register("step")}
                                     type="radio"
                                     id="making"
-                                    name="step"
                                     value="제작"
+                                    {...register("step")}
                                 />
                                 <div className="btn">제작단계</div>
                             </label>
                         </div>
                     </Column>
-                    <Column>
+                    {errors.step && errors.step.message && <>{errors.step.message}</>}
+                    <Column ref={hasDesignRef}>
                         <div className="column__head">
                             디자인이나 설계 도면이 준비되셨나요? *
                         </div>
@@ -126,7 +151,7 @@ function Contact() {
                             </label>
                         </div>
                     </Column>
-                    <Column>
+                    <Column ref={costAndScheduleRef}>
                         <div className="column__head">예산과 일정이 정해져 계신가요?</div>
                         <div className="column__info">
                             <SSelect
@@ -154,7 +179,7 @@ function Contact() {
                             </SSelect>
                         </div>
                     </Column>
-                    <Column>
+                    <Column ref={descriptionRef}>
                         <div className="column__head">내용을 말씀해 주시겠어요? *</div>
                         <div className="column__info">
                             <MultiColumn>
@@ -219,7 +244,7 @@ function Contact() {
                             </MultiColumn>
                         </div>
                     </Column>
-                    <Column>
+                    <Column ref={knowPathRef}>
                         <div className="column__head">
                             위브먼트를 알게 된 경로를 선택해주세요. *
                         </div>
@@ -278,7 +303,7 @@ function Contact() {
                             </label>
                         </div>
                     </Column>
-                    <Column>
+                    <Column ref={clientRef}>
                         <div className="column__head">
                             감사합니다! <br />
                             기입된 정보로 회신드리겠습니다
@@ -337,7 +362,7 @@ function Contact() {
                                 <input
                                     className="btn"
                                     placeholder="ex. 연락처 내 개인 회선 번호는 '04'번입니다"
-                                    {...register("clientHomepage")}
+                                    {...register("clientRequest")}
                                 />
                             </InfoColumn>
                         </div>
@@ -374,7 +399,7 @@ const ProcessForm = styled.form`
     width: 100%;
     height: 100%;
     display: flex;
-    padding-top: ${(props) => props.theme.navbarHeight};
+    /* padding-top: ${(props) => props.theme.navbarHeight}; */
     flex-direction: column;
     .form__head {
         align-self: center;
@@ -465,6 +490,7 @@ const MultiColumn = styled.div`
         min-height: 230px;
         outline: none;
         transition: all 0.2s ease-in-out;
+        font-family: "Pretendard";
         line-height: 1.5rem;
         &:focus {
             border: 2px solid ${(props) => props.theme.accentColor};
@@ -521,6 +547,9 @@ const InfoColumn = styled.div`
     }
     input {
         flex: 6;
+        &::placeholder {
+            font-family: "Pretendard";
+        }
     }
 `;
 

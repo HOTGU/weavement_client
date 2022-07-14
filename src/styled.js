@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { device } from "./device";
 
 export const GlobalStyles = createGlobalStyle`
     ${reset}
@@ -19,6 +20,7 @@ export const GlobalStyles = createGlobalStyle`
         color:${(props) => props.theme.textColor};
         font-family: "Pretendard";
         font-size: 16px;
+        padding-top: 80px;
     }
     .wide-container {
         width:100%;
@@ -27,7 +29,10 @@ export const GlobalStyles = createGlobalStyle`
         width:100%;
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 10px;
+        padding: 0 30px;
+        @media ${device.laptop} {
+            padding: 0 10px;
+        }
     }
     .btn {
         padding: 10px 14px;
@@ -46,6 +51,7 @@ export const myTheme = {
     subAccentColor: "rgb(192,156,131)",
     borderColor: "#dcdde1",
     hoverColor: "#bdc3c7",
+    boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;",
     grayColor: "#95a5a6",
     blackColor: "black",
     darkGrayColor: "#3e3a39",
